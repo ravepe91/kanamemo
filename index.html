@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="Kanamemo">
+        <meta name="description" content="Juego de memoria para el estudio de los kana">
+        <meta name="author" content="Ramón Vera Pérez">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <title>Kanamemo</title>
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+    <body>
+        
+        <main id="contenedor">
+            <header id="encabezado">
+            </header>
+
+            <nav id="menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#kanamemo">Kanamemo</a>
+                <a href="#material">Material de estudio</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+
+            <div id="contenido">
+                <div id="right">
+                    <br>
+                    <section id="inicio">
+                    <div id="titulos"><p><b>Introducción a los kana</b></p></div>
+                    </section>
+                    <br>
+                    <p>Los kana (仮名) son silabarios fonéticos que, junto con los kanji (漢字), ideogramas de origen chino, componen los caracteres utilizados en la escritura japonesa. Mientras que los kanji suelen poseer diferentes lecturas fonéticas y representan conceptos abstractos, los kana equivalen a sílabas en específico y no representan una idea o significado. La mayoría de las palabras en japonés se escriben utilizando kanji y kana (Bullock, s/f).
+                    </p>
+                    <br>
+                    <p>Los silabarios kana se dividen en dos conjuntos de caracteres, cada uno integrado por 46 caracteres básicos:</p>
+                    <br>
+                    <p><b>Hiragana (ひらがな):</b> Son caracteres de trazo fluido y redondeado. Su origen se remonta a la Era Heian (siglos IX-XI) y son resultado de una simplificación de los caracteres chinos (sōsho). En principio, era un sistema de escritura propio de las mujeres de la corte imperial, quienes no tenían permitido el aprendizaje del chino formal. Como curiosidad, la primera novela japonesa, La historia de Genji (源氏物語, en rōmaji, Genji Monogatari), fue escrita originalmente por Murasaki Shikibu usando exclusivamente caractares hiragana. Hoy en día, se utilizan para la escritura de las palabras de origen nativo (Wikipedia, 2026). Ejemplos:</p>
+                    <br>
+                    <p><b>• ありがとう (arigatō):</b> Gracias.</p> 
+                    <p><b>• がっこう (gakkō):</b> Escuela.</p>
+                    <p><b>• きょう (kyō):</b> Hoy.</p>
+                    <br>
+                    <p><b>Katakana (カタカナ):</b> En contraste con los caracteres hiragana, los katakana se caracterizan por utilizar trazos angulares y rectos. Su origen también se rastrea hasta la Era Heian, pero estos derivan de trazos específicos de los kanji que servían a los monjes budistas para identificar de forma sencilla su pronunciación en los textos sagrados. En la actualidad, se utilizan para la transliteración de palabras de origen extranjero (Wikipedia, 2026). Ejemplos:</p>
+                    <br>
+                    <p><b>• カメラ (kamera): </b> Del inglés camera (Cámara).</p> 
+                    <p><b>• パン (pan):</b> Del portugués pão (Pan).</p>
+                    <p><b>• ホテル (hoteru):</b> Del inglés hotel (Hotel).</p>
+                    <br>
+                    <div id="titulos"><p><b>Sobre los caracteres Yōon</b></p></div>
+                    <br>
+                    <p>Además de los 46 caracteres básicos de cada silabario, hiragana y katakana cuentan con un conjunto adicional de caracteres conocidos como Yōon (拗音, en español, sonidos contraídos). Estos son resultado de la combinación de dos caracteres básicos para la representación de sonidos complejos (sonidos semi-diptongales). Una característica distintiva de los Yōon es que el segundo caracter siempre se escribe más pequeño, lo cual indica que cambia el sonido y a su vez el significado de la palabra que lo utiliza (Wikipedia, 2026b). Ejemplos:</p>
+                    <p><b>• びょういん (byouin):</b> Hospital.</p>
+                    <p><b>• きょう (kyō):</b> Hoy.</p>
+                    <p><b>• おちゃ (ocha):</b> Té verde. </p>
+                    <br>
+                    <section id="kanamemo">
+                <div id="titulos"><p><b>Kanamemo: Juego de memoria para el estudio de los kana</b></p></div>
+                </section>
+                    <br>
+                    <p style="text-align: justify;"><strong>Instrucciones: </strong>A continuación, te presentamos un juego de memoria en el que deberás relacionar los caracteres kana con el sonido que le corresponde. Cuentas con diferentes modos de juego, con los cuales reforzarás tu estudio del hiragana y el katakana. No hay límite de tiempo y puedes jugar tantas veces como gustes. ¡Éxito!</p>
+<p>
+    <br>
+<script src="https://cdn.tailwindcss.com"></script>
+</p>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b; /* slate-800 */
+        }
+
+        .jp-text {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        .card-inner {
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        .card-flip .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Ocultar barra de desplazamiento en la guía */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<header class="bg-white shadow-sm z-10">
+<div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+<h1 class="text-2xl font-bold text-slate-800 flex items-center gap-2"><span class="text-indigo-600 jp-text text-3xl">あ</span> Kanamemo</h1>
+<div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto"><select id="mode-selector" class="bg-slate-50 border border-slate-300 text-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+<option value="hiragana">Hiragana</option>
+<option value="katakana">Katakana</option>
+<option value="mixed">Mixto (Hira + Kata)</option>
+</select><button id="btn-restart" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm"> Nueva Partida </button> <button id="btn-guide" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-1"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path> <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"></path> </svg> Guía </button></div>
+</div>
+</header><main class="flex-grow flex flex-col items-center justify-center p-4"><!-- Estadísticas -->
+<div class="mb-6 w-full max-w-4xl flex justify-between items-center text-slate-600 font-medium">
+<div id="move-counter">Movimientos: <span class="text-indigo-600 text-lg font-bold">0</span></div>
+<div id="match-counter">Parejas: <span class="text-emerald-600 text-lg font-bold">0/12</span></div>
+</div>
+<!-- Tablero de Cartas -->
+<div id="game-board" class="grid grid-cols-4 sm:grid-cols-6 gap-3 sm:gap-4 max-w-4xl w-full perspective-1000"><!-- Las cartas se inyectarán aquí mediante JS --></div>
+<!-- Mensaje de Victoria -->
+<div id="win-message" class="hidden mt-8 text-center bg-emerald-50 border border-emerald-200 rounded-xl p-6 shadow-sm w-full max-w-md">
+<h2 class="text-2xl font-bold text-emerald-600 mb-2">¡Completado! 🎉</h2>
+<p class="text-slate-700 mb-4">Has encontrado todas las parejas en <span id="final-moves" class="font-bold"></span> movimientos.</p>
+<button onclick="initGame()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"> Jugar de nuevo </button></div>
+</main>
+<div id="guide-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+<div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"><!-- Modal Header -->
+<div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+<h2 class="text-xl font-bold text-slate-800">Guía de Consulta Kana</h2>
+<button id="btn-close-guide" class="text-slate-400 hover:text-slate-600 transition-colors p-1"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewbox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button></div>
+<!-- Modal Body (Tablas de Consulta) -->
+<div class="p-6 overflow-y-auto hide-scrollbar flex-grow bg-white"><!-- Selector de Tabla en la guía -->
+<div class="flex border-b border-slate-200 mb-6"><button id="tab-hiragana" class="px-4 py-2 border-b-2 border-indigo-600 text-indigo-600 font-medium">Hiragana</button> <button id="tab-katakana" class="px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium">Katakana</button></div>
+<div id="guide-content" class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Contenido inyectado por JS --></div>
+</div>
+</div>
+</div>
+<p>
+<script>
+        // Datos de los 46 básicos y Yōon (excluyendo sonidos con ten-ten/maru por simplicidad en memoria, pero incluidos en la guía)
+        
+        const kanaData = {
+            hiragana: [
+                // Básicos
+                { r: 'a', k: 'あ' }, { r: 'i', k: 'い' }, { r: 'u', k: 'う' }, { r: 'e', k: 'え' }, { r: 'o', k: 'お' },
+                { r: 'ka', k: 'か' }, { r: 'ki', k: 'き' }, { r: 'ku', k: 'く' }, { r: 'ke', k: 'け' }, { r: 'ko', k: 'こ' },
+                { r: 'sa', k: 'さ' }, { r: 'shi', k: 'し' }, { r: 'su', k: 'す' }, { r: 'se', k: 'せ' }, { r: 'so', k: 'そ' },
+                { r: 'ta', k: 'た' }, { r: 'chi', k: 'ち' }, { r: 'tsu', k: 'つ' }, { r: 'te', k: 'て' }, { r: 'to', k: 'と' },
+                { r: 'na', k: 'な' }, { r: 'ni', k: 'に' }, { r: 'nu', k: 'ぬ' }, { r: 'ne', k: 'ね' }, { r: 'no', k: 'の' },
+                { r: 'ha', k: 'は' }, { r: 'hi', k: 'ひ' }, { r: 'fu', k: 'ふ' }, { r: 'he', k: 'へ' }, { r: 'ho', k: 'ほ' },
+                { r: 'ma', k: 'ま' }, { r: 'mi', k: 'み' }, { r: 'mu', k: 'む' }, { r: 'me', k: 'め' }, { r: 'mo', k: 'も' },
+                { r: 'ya', k: 'や' }, { r: 'yu', k: 'ゆ' }, { r: 'yo', k: 'よ' },
+                { r: 'ra', k: 'ら' }, { r: 'ri', k: 'り' }, { r: 'ru', k: 'る' }, { r: 're', k: 'れ' }, { r: 'ro', k: 'ろ' },
+                { r: 'wa', k: 'わ' }, { r: 'wo', k: 'を' }, { r: 'n', k: 'ん' },
+                // Yōon
+                { r: 'kya', k: 'きゃ' }, { r: 'kyu', k: 'きゅ' }, { r: 'kyo', k: 'きょ' },
+                { r: 'sha', k: 'しゃ' }, { r: 'shu', k: 'しゅ' }, { r: 'sho', k: 'しょ' },
+                { r: 'cha', k: 'ちゃ' }, { r: 'chu', k: 'ちゅ' }, { r: 'cho', k: 'ちょ' },
+                { r: 'nya', k: 'にゃ' }, { r: 'nyu', k: 'にゅ' }, { r: 'nyo', k: 'にょ' },
+                { r: 'hya', k: 'ひゃ' }, { r: 'hyu', k: 'ひゅ' }, { r: 'hyo', k: 'ひょ' },
+                { r: 'mya', k: 'みゃ' }, { r: 'myu', k: 'みゅ' }, { r: 'myo', k: 'みょ' },
+                { r: 'rya', k: 'りゃ' }, { r: 'ryu', k: 'りゅ' }, { r: 'ryo', k: 'りょ' }
+            ],
+            katakana: [
+                // Básicos
+                { r: 'a', k: 'ア' }, { r: 'i', k: 'イ' }, { r: 'u', k: 'ウ' }, { r: 'e', k: 'エ' }, { r: 'o', k: 'オ' },
+                { r: 'ka', k: 'カ' }, { r: 'ki', k: 'キ' }, { r: 'ku', k: 'ク' }, { r: 'ke', k: 'ケ' }, { r: 'ko', k: 'コ' },
+                { r: 'sa', k: 'サ' }, { r: 'shi', k: 'シ' }, { r: 'su', k: 'ス' }, { r: 'se', k: 'セ' }, { r: 'so', k: 'ソ' },
+                { r: 'ta', k: 'タ' }, { r: 'chi', k: 'チ' }, { r: 'tsu', k: 'ツ' }, { r: 'te', k: 'テ' }, { r: 'to', k: 'ト' },
+                { r: 'na', k: 'ナ' }, { r: 'ni', k: 'ニ' }, { r: 'nu', k: 'ヌ' }, { r: 'ne', k: 'ネ' }, { r: 'no', k: 'ノ' },
+                { r: 'ha', k: 'ハ' }, { r: 'hi', k: 'ヒ' }, { r: 'fu', k: 'フ' }, { r: 'he', k: 'ヘ' }, { r: 'ho', k: 'ホ' },
+                { r: 'ma', k: 'マ' }, { r: 'mi', k: 'ミ' }, { r: 'mu', k: 'ム' }, { r: 'me', k: 'メ' }, { r: 'mo', k: 'モ' },
+                { r: 'ya', k: 'ヤ' }, { r: 'yu', k: 'ユ' }, { r: 'yo', k: 'ヨ' },
+                { r: 'ra', k: 'ラ' }, { r: 'ri', k: 'リ' }, { r: 'ru', k: 'ル' }, { r: 're', k: 'レ' }, { r: 'ro', k: 'ロ' },
+                { r: 'wa', k: 'ワ' }, { r: 'wo', k: 'ヲ' }, { r: 'n', k: 'ン' },
+                // Yōon
+                { r: 'kya', k: 'キャ' }, { r: 'kyu', k: 'キュ' }, { r: 'kyo', k: 'キョ' },
+                { r: 'sha', k: 'シャ' }, { r: 'shu', k: 'シュ' }, { r: 'sho', k: 'ショ' },
+                { r: 'cha', k: 'チャ' }, { r: 'chu', k: 'チュ' }, { r: 'cho', k: 'チョ' },
+                { r: 'nya', k: 'ニャ' }, { r: 'nyu', k: 'ニュ' }, { r: 'nyo', k: 'ニョ' },
+                { r: 'hya', k: 'ヒャ' }, { r: 'hyu', k: 'ヒュ' }, { r: 'hyo', k: 'ヒョ' },
+                { r: 'mya', k: 'ミャ' }, { r: 'myu', k: 'ミュ' }, { r: 'myo', k: 'ミョ' },
+                { r: 'rya', k: 'リャ' }, { r: 'ryu', k: 'リュ' }, { r: 'ryo', k: 'リョ' }
+            ]
+        };
+
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        let isLocked = false;
+        const TOTAL_PAIRS = 12; // Un tablero de 24 cartas es buen tamaño.
+
+        const boardEl = document.getElementById('game-board');
+        const movesEl = document.querySelector('#move-counter span');
+        const matchEl = document.querySelector('#match-counter span');
+        const winMessage = document.getElementById('win-message');
+        const modeSelector = document.getElementById('mode-selector');
+
+        // Función para barajar un array (Algoritmo de Fisher-Yates)
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex > 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function initGame() {
+            // Reiniciar estado
+            boardEl.innerHTML = '';
+            winMessage.classList.add('hidden');
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            isLocked = false;
+            updateStats();
+
+            // Obtener el modo seleccionado
+            const mode = modeSelector.value;
+            let sourceData = [];
+
+            if (mode === 'hiragana') {
+                sourceData = [...kanaData.hiragana];
+            } else if (mode === 'katakana') {
+                sourceData = [...kanaData.katakana];
+            } else {
+                // Modo mixto
+                sourceData = [...kanaData.hiragana, ...kanaData.katakana];
+            }
+
+            // Seleccionar aleatoriamente TOTAL_PAIRS elementos
+            shuffle(sourceData);
+            const selectedPairs = sourceData.slice(0, TOTAL_PAIRS);
+
+            // Crear el array de cartas (1 kana y 1 romaji por pareja)
+            cards = [];
+            selectedPairs.forEach((item, index) => {
+                // Carta de Kana
+                cards.push({
+                    id: `kana-${index}`,
+                    matchId: index,
+                    text: item.k,
+                    type: 'kana'
+                });
+                // Carta de Romaji
+                cards.push({
+                    id: `romaji-${index}`,
+                    matchId: index,
+                    text: item.r,
+                    type: 'romaji'
+                });
+            });
+
+            // Barajar el mazo final de cartas
+            shuffle(cards);
+
+            // Renderizar el tablero
+            renderBoard();
+        }
+
+        function renderBoard() {
+            cards.forEach(card => {
+                const cardEl = document.createElement('div');
+                // Altura responsiva (aspect ratio casi cuadrado)
+                cardEl.className = 'w-full aspect-[3/4] sm:aspect-square relative cursor-pointer perspective-1000 group';
+                cardEl.dataset.id = card.id;
+                cardEl.dataset.matchId = card.matchId;
+
+                // Aplicar estilo de fuente dependiendo si es Romaji o Kana
+                const textClass = card.type === 'kana' ? 'jp-text text-3xl sm:text-4xl text-slate-800' : 'text-xl sm:text-2xl font-bold text-indigo-700';
+
+                cardEl.innerHTML = `
+                    <div class="card-inner w-full h-full absolute transform-style-3d shadow-sm group-hover:shadow-md rounded-xl transition-shadow duration-300">
+                        <!-- Frente (Logo/Signo de interrogación) -->
+                        <div class="card-front absolute w-full h-full backface-hidden bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center">
+                            <span class="text-slate-300 text-3xl font-bold">?</span>
+                        </div>
+                        <!-- Reverso (Valor de la carta) -->
+                        <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 bg-slate-50 border-2 border-indigo-100 rounded-xl flex items-center justify-center">
+                            <span class="${textClass}">${card.text}</span>
+                        </div>
+                    </div>
+                `;
+
+                cardEl.addEventListener('click', () => flipCard(cardEl));
+                boardEl.appendChild(cardEl);
+            });
+        }
+
+        function flipCard(cardEl) {
+            // Evitar clics si el tablero está bloqueado, si la carta ya está volteada
+            if (isLocked || cardEl.classList.contains('card-flip')) return;
+
+            // Voltear carta visualmente
+            cardEl.classList.add('card-flip');
+            flippedCards.push(cardEl);
+
+            if (flippedCards.length === 2) {
+                moves++;
+                updateStats();
+                checkForMatch();
+            }
+        }
+
+        function checkForMatch() {
+            const [card1, card2] = flippedCards;
+            const match1 = card1.dataset.matchId;
+            const match2 = card2.dataset.matchId;
+
+            if (match1 === match2) {
+                // ¡Es una pareja!
+                matchedPairs++;
+                updateStats();
+                
+                // Efecto de acierto sutil
+                setTimeout(() => {
+                    card1.querySelector('.card-back').classList.add('bg-emerald-50', 'border-emerald-200');
+                    card2.querySelector('.card-back').classList.add('bg-emerald-50', 'border-emerald-200');
+                    card1.querySelector('.card-back span').classList.add('text-emerald-700');
+                    card2.querySelector('.card-back span').classList.add('text-emerald-700');
+                }, 300);
+
+                flippedCards = [];
+
+                // Comprobar victoria
+                if (matchedPairs === TOTAL_PAIRS) {
+                    setTimeout(() => {
+                        document.getElementById('final-moves').textContent = moves;
+                        winMessage.classList.remove('hidden');
+                    }, 500);
+                }
+            } else {
+                // No hay coincidencia. Bloquear tablero y voltear de nuevo tras un retraso
+                isLocked = true;
+                setTimeout(() => {
+                    card1.classList.remove('card-flip');
+                    card2.classList.remove('card-flip');
+                    flippedCards = [];
+                    isLocked = false;
+                }, 1000);
+            }
+        }
+
+        function updateStats() {
+            movesEl.textContent = moves;
+            matchEl.textContent = `${matchedPairs}/${TOTAL_PAIRS}`;
+        }
+
+        document.getElementById('btn-restart').addEventListener('click', initGame);
+        modeSelector.addEventListener('change', initGame);
+
+        const modal = document.getElementById('guide-modal');
+        const btnGuide = document.getElementById('btn-guide');
+        const btnCloseGuide = document.getElementById('btn-close-guide');
+        const tabHiragana = document.getElementById('tab-hiragana');
+        const tabKatakana = document.getElementById('tab-katakana');
+        const guideContent = document.getElementById('guide-content');
+
+        // Función para renderizar el contenido de la guía
+        function renderGuideContent(type) {
+            const data = type === 'hiragana' ? kanaData.hiragana : kanaData.katakana;
+            
+            // Separar básicos de Yōon para mostrarlos en tablas distintas
+            const basics = data.slice(0, 46);
+            const yoon = data.slice(46);
+
+            // Plantilla de tabla
+            let html = `
+                <div class="col-span-1 md:col-span-2 mb-4">
+                    <h3 class="text-lg font-semibold text-slate-700 mb-3 border-b pb-2">Básicos (Gojūon)</h3>
+                    <div class="grid grid-cols-5 gap-2 text-center text-sm">
+            `;
+
+            // Llenar básicos (asumimos un layout grid de 5 columnas para A, I, U, E, O)
+            // Se insertan celdas vacías si corresponde (ej. yi, ye, wu, etc.)
+            const gojuonStructure = [
+                ['a','i','u','e','o'],
+                ['ka','ki','ku','ke','ko'],
+                ['sa','shi','su','se','so'],
+                ['ta','chi','tsu','te','to'],
+                ['na','ni','nu','ne','no'],
+                ['ha','hi','fu','he','ho'],
+                ['ma','mi','mu','me','mo'],
+                ['ya','','yu','','yo'], // Celdas vacías
+                ['ra','ri','ru','re','ro'],
+                ['wa','','','','wo'],
+                ['n','','','','']
+            ];
+
+            gojuonStructure.forEach(row => {
+                row.forEach(r => {
+                    if (r === '') {
+                        html += `<div class="p-2 bg-slate-50/50 rounded border border-transparent"></div>`;
+                    } else {
+                        const char = basics.find(item => item.r === r);
+                        if(char) {
+                            html += `
+                            <div class="p-2 bg-white border border-slate-200 rounded shadow-sm flex flex-col items-center justify-center">
+                                <span class="jp-text text-xl font-bold text-slate-800">${char.k}</span>
+                                <span class="text-xs text-slate-500 mt-1">${char.r}</span>
+                            </div>`;
+                        }
+                    }
+                });
+            });
+
+            html += `
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-lg font-semibold text-slate-700 mb-3 border-b pb-2">Yōon (Sonidos contraídos)</h3>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
+            `;
+
+            yoon.forEach(char => {
+                html += `
+                    <div class="p-2 bg-white border border-slate-200 rounded shadow-sm flex flex-col items-center justify-center">
+                        <span class="jp-text text-xl font-bold text-slate-800">${char.k}</span>
+                        <span class="text-xs text-slate-500 mt-1">${char.r}</span>
+                    </div>`;
+            });
+
+            html += `</div></div>`;
+            guideContent.innerHTML = html;
+        }
+
+        // Eventos del Modal
+        btnGuide.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            // Renderizar la pestaña activa por defecto
+            if (tabHiragana.classList.contains('border-indigo-600')) {
+                renderGuideContent('hiragana');
+            } else {
+                renderGuideContent('katakana');
+            }
+        });
+
+        btnCloseGuide.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Cerrar al hacer click fuera del contenido del modal
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+
+        // Cambio de Pestañas en Modal
+        tabHiragana.addEventListener('click', () => {
+            tabHiragana.className = 'px-4 py-2 border-b-2 border-indigo-600 text-indigo-600 font-medium';
+            tabKatakana.className = 'px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium';
+            renderGuideContent('hiragana');
+        });
+
+        tabKatakana.addEventListener('click', () => {
+            tabKatakana.className = 'px-4 py-2 border-b-2 border-indigo-600 text-indigo-600 font-medium';
+            tabHiragana.className = 'px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium';
+            renderGuideContent('katakana');
+        });
+
+        window.onload = initGame;
+
+    </script>
+</p>
+<br>
+<section id="material">
+<div id="titulos"><p><b>Material de estudio | Silabarios</b></p></div>
+</section>
+<br>
+<p><br /></p>
+<style>
+        :root {
+            --primary-color: #4a5568;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-color: #2d3748;
+            --accent-color: #c53030;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #edf2f7;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .kana-cell {
+            background-color: #fff;
+            transition: background-color 0.2s ease;
+        }
+
+        .kana-cell:hover {
+            background-color: #fffaf0;
+        }
+
+        .kana {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            color: #1a202c;
+            line-height: 1.2;
+        }
+
+        .romaji {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: lowercase;
+        }
+
+        .empty-cell {
+            background-color: #f8fafc;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .kana {
+                font-size: 1.4rem;
+            }
+            .romaji {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+<div class="container">
+<h1 style="text-align: center;">Silabario Hiragana (ひらがな)</h1>
+<p class="subtitle" style="text-align: center;">Tabla de los 46 caracteres básicos (Gojūon / 五十音)</p>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante</th>
+<th>- a</th>
+<th>- i</th>
+<th>- u</th>
+<th>- e</th>
+<th>- o</th>
+</tr>
+</thead>
+<tbody><!-- Vocales -->
+<tr>
+<th>Vocales</th>
+<td class="kana-cell"><span class="kana">あ</span><span class="romaji">a</span></td>
+<td class="kana-cell"><span class="kana">い</span><span class="romaji">i</span></td>
+<td class="kana-cell"><span class="kana">う</span><span class="romaji">u</span></td>
+<td class="kana-cell"><span class="kana">え</span><span class="romaji">e</span></td>
+<td class="kana-cell"><span class="kana">お</span><span class="romaji">o</span></td>
+</tr>
+<!-- Fila K -->
+<tr>
+<th>K</th>
+<td class="kana-cell"><span class="kana">か</span><span class="romaji">ka</span></td>
+<td class="kana-cell"><span class="kana">き</span><span class="romaji">ki</span></td>
+<td class="kana-cell"><span class="kana">く</span><span class="romaji">ku</span></td>
+<td class="kana-cell"><span class="kana">け</span><span class="romaji">ke</span></td>
+<td class="kana-cell"><span class="kana">こ</span><span class="romaji">ko</span></td>
+</tr>
+<!-- Fila S -->
+<tr>
+<th>S</th>
+<td class="kana-cell"><span class="kana">さ</span><span class="romaji">sa</span></td>
+<td class="kana-cell"><span class="kana">し</span><span class="romaji">shi</span></td>
+<td class="kana-cell"><span class="kana">す</span><span class="romaji">su</span></td>
+<td class="kana-cell"><span class="kana">せ</span><span class="romaji">se</span></td>
+<td class="kana-cell"><span class="kana">そ</span><span class="romaji">so</span></td>
+</tr>
+<!-- Fila T -->
+<tr>
+<th>T</th>
+<td class="kana-cell"><span class="kana">た</span><span class="romaji">ta</span></td>
+<td class="kana-cell"><span class="kana">ち</span><span class="romaji">chi</span></td>
+<td class="kana-cell"><span class="kana">つ</span><span class="romaji">tsu</span></td>
+<td class="kana-cell"><span class="kana">て</span><span class="romaji">te</span></td>
+<td class="kana-cell"><span class="kana">と</span><span class="romaji">to</span></td>
+</tr>
+<!-- Fila N -->
+<tr>
+<th>N</th>
+<td class="kana-cell"><span class="kana">な</span><span class="romaji">na</span></td>
+<td class="kana-cell"><span class="kana">に</span><span class="romaji">ni</span></td>
+<td class="kana-cell"><span class="kana">ぬ</span><span class="romaji">nu</span></td>
+<td class="kana-cell"><span class="kana">ね</span><span class="romaji">ne</span></td>
+<td class="kana-cell"><span class="kana">の</span><span class="romaji">no</span></td>
+</tr>
+<!-- Fila H -->
+<tr>
+<th>H</th>
+<td class="kana-cell"><span class="kana">は</span><span class="romaji">ha</span></td>
+<td class="kana-cell"><span class="kana">ひ</span><span class="romaji">hi</span></td>
+<td class="kana-cell"><span class="kana">ふ</span><span class="romaji">fu</span></td>
+<td class="kana-cell"><span class="kana">へ</span><span class="romaji">he</span></td>
+<td class="kana-cell"><span class="kana">ほ</span><span class="romaji">ho</span></td>
+</tr>
+<!-- Fila M -->
+<tr>
+<th>M</th>
+<td class="kana-cell"><span class="kana">ま</span><span class="romaji">ma</span></td>
+<td class="kana-cell"><span class="kana">み</span><span class="romaji">mi</span></td>
+<td class="kana-cell"><span class="kana">む</span><span class="romaji">mu</span></td>
+<td class="kana-cell"><span class="kana">め</span><span class="romaji">me</span></td>
+<td class="kana-cell"><span class="kana">も</span><span class="romaji">mo</span></td>
+</tr>
+<!-- Fila Y -->
+<tr>
+<th>Y</th>
+<td class="kana-cell"><span class="kana">や</span><span class="romaji">ya</span></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">ゆ</span><span class="romaji">yu</span></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">よ</span><span class="romaji">yo</span></td>
+</tr>
+<!-- Fila R -->
+<tr>
+<th>R</th>
+<td class="kana-cell"><span class="kana">ら</span><span class="romaji">ra</span></td>
+<td class="kana-cell"><span class="kana">り</span><span class="romaji">ri</span></td>
+<td class="kana-cell"><span class="kana">る</span><span class="romaji">ru</span></td>
+<td class="kana-cell"><span class="kana">れ</span><span class="romaji">re</span></td>
+<td class="kana-cell"><span class="kana">ろ</span><span class="romaji">ro</span></td>
+</tr>
+<!-- Fila W / N singular -->
+<tr>
+<th>W / N</th>
+<td class="kana-cell"><span class="kana">わ</span><span class="romaji">wa</span></td>
+<td class="empty-cell"></td>
+<td class="empty-cell"></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">を</span><span class="romaji">wo / o</span></td>
+</tr>
+<tr>
+<th>N (Consonante sola)</th>
+<td colspan="5" class="kana-cell"><span class="kana">ん</span><span class="romaji">n</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<p><br /></p>
+<style>
+        :root {
+            --primary-color: #4a5568;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-color: #2d3748;
+            --accent-color: #c53030;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #edf2f7;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .kana-cell {
+            background-color: #fff;
+            transition: background-color 0.2s ease;
+        }
+
+        .kana-cell:hover {
+            background-color: #fffaf0;
+        }
+
+        .kana {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            color: #1a202c;
+            line-height: 1.2;
+        }
+
+        .romaji {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: lowercase;
+        }
+
+        .empty-cell {
+            background-color: #f8fafc;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .kana {
+                font-size: 1.4rem;
+            }
+            .romaji {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+<div class="container">
+<h1 style="text-align: center;">Silabario Katakana (カタカナ)</h1>
+<p class="subtitle" style="text-align: center;">Tabla de los 46 caracteres básicos (Gojūon / 五十音)</p>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante</th>
+<th>- a</th>
+<th>- i</th>
+<th>- u</th>
+<th>- e</th>
+<th>- o</th>
+</tr>
+</thead>
+<tbody><!-- Vocales -->
+<tr>
+<th>Vocales</th>
+<td class="kana-cell"><span class="kana">ア</span><span class="romaji">a</span></td>
+<td class="kana-cell"><span class="kana">イ</span><span class="romaji">i</span></td>
+<td class="kana-cell"><span class="kana">ウ</span><span class="romaji">u</span></td>
+<td class="kana-cell"><span class="kana">エ</span><span class="romaji">e</span></td>
+<td class="kana-cell"><span class="kana">オ</span><span class="romaji">o</span></td>
+</tr>
+<!-- Fila K -->
+<tr>
+<th>K</th>
+<td class="kana-cell"><span class="kana">カ</span><span class="romaji">ka</span></td>
+<td class="kana-cell"><span class="kana">キ</span><span class="romaji">ki</span></td>
+<td class="kana-cell"><span class="kana">ク</span><span class="romaji">ku</span></td>
+<td class="kana-cell"><span class="kana">ケ</span><span class="romaji">ke</span></td>
+<td class="kana-cell"><span class="kana">コ</span><span class="romaji">ko</span></td>
+</tr>
+<!-- Fila S -->
+<tr>
+<th>S</th>
+<td class="kana-cell"><span class="kana">サ</span><span class="romaji">sa</span></td>
+<td class="kana-cell"><span class="kana">シ</span><span class="romaji">shi</span></td>
+<td class="kana-cell"><span class="kana">ス</span><span class="romaji">su</span></td>
+<td class="kana-cell"><span class="kana">セ</span><span class="romaji">se</span></td>
+<td class="kana-cell"><span class="kana">ソ</span><span class="romaji">so</span></td>
+</tr>
+<!-- Fila T -->
+<tr>
+<th>T</th>
+<td class="kana-cell"><span class="kana">タ</span><span class="romaji">ta</span></td>
+<td class="kana-cell"><span class="kana">チ</span><span class="romaji">chi</span></td>
+<td class="kana-cell"><span class="kana">ツ</span><span class="romaji">tsu</span></td>
+<td class="kana-cell"><span class="kana">テ</span><span class="romaji">te</span></td>
+<td class="kana-cell"><span class="kana">ト</span><span class="romaji">to</span></td>
+</tr>
+<!-- Fila N -->
+<tr>
+<th>N</th>
+<td class="kana-cell"><span class="kana">ナ</span><span class="romaji">na</span></td>
+<td class="kana-cell"><span class="kana">ニ</span><span class="romaji">ni</span></td>
+<td class="kana-cell"><span class="kana">ヌ</span><span class="romaji">nu</span></td>
+<td class="kana-cell"><span class="kana">ネ</span><span class="romaji">ne</span></td>
+<td class="kana-cell"><span class="kana">ノ</span><span class="romaji">no</span></td>
+</tr>
+<!-- Fila H -->
+<tr>
+<th>H</th>
+<td class="kana-cell"><span class="kana">ハ</span><span class="romaji">ha</span></td>
+<td class="kana-cell"><span class="kana">ヒ</span><span class="romaji">hi</span></td>
+<td class="kana-cell"><span class="kana">フ</span><span class="romaji">fu</span></td>
+<td class="kana-cell"><span class="kana">ヘ</span><span class="romaji">he</span></td>
+<td class="kana-cell"><span class="kana">ホ</span><span class="romaji">ho</span></td>
+</tr>
+<!-- Fila M -->
+<tr>
+<th>M</th>
+<td class="kana-cell"><span class="kana">マ</span><span class="romaji">ma</span></td>
+<td class="kana-cell"><span class="kana">ミ</span><span class="romaji">mi</span></td>
+<td class="kana-cell"><span class="kana">ム</span><span class="romaji">mu</span></td>
+<td class="kana-cell"><span class="kana">メ</span><span class="romaji">me</span></td>
+<td class="kana-cell"><span class="kana">モ</span><span class="romaji">mo</span></td>
+</tr>
+<!-- Fila Y -->
+<tr>
+<th>Y</th>
+<td class="kana-cell"><span class="kana">ヤ</span><span class="romaji">ya</span></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">ユ</span><span class="romaji">yu</span></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">ヨ</span><span class="romaji">yo</span></td>
+</tr>
+<!-- Fila R -->
+<tr>
+<th>R</th>
+<td class="kana-cell"><span class="kana">ラ</span><span class="romaji">ra</span></td>
+<td class="kana-cell"><span class="kana">リ</span><span class="romaji">ri</span></td>
+<td class="kana-cell"><span class="kana">ル</span><span class="romaji">ru</span></td>
+<td class="kana-cell"><span class="kana">レ</span><span class="romaji">re</span></td>
+<td class="kana-cell"><span class="kana">ロ</span><span class="romaji">ro</span></td>
+</tr>
+<!-- Fila W / N singular -->
+<tr>
+<th>W / N</th>
+<td class="kana-cell"><span class="kana">ワ</span><span class="romaji">wa</span></td>
+<td class="empty-cell"></td>
+<td class="empty-cell"></td>
+<td class="empty-cell"></td>
+<td class="kana-cell"><span class="kana">ヲ</span><span class="romaji">wo / o</span></td>
+</tr>
+<tr>
+<th>N (Consonante sola)</th>
+<td colspan="5" class="kana-cell"><span class="kana">ン</span><span class="romaji">n</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<p><br /></p>
+<style>
+        :root {
+            --primary-color: #4a5568;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-color: #2d3748;
+            --accent-color: #c53030;
+            --accent-hover: #fffaf0;
+            --header-bg: #edf2f7;
+            --tag-bg: #feefea;
+            --tag-border: #fbd5c8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 2.1rem;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            background-color: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .section-header {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--header-bg);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .kana-cell {
+            background-color: #fff;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+            width: 25%;
+        }
+
+        .kana-cell:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .kana {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            color: #1a202c;
+            line-height: 1.2;
+        }
+
+        .romaji {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: lowercase;
+            margin-top: 2px;
+        }
+
+        .empty-cell {
+            background-color: #f8fafc;
+        }
+
+        footer {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .kana {
+                font-size: 1.4rem;
+            }
+            .romaji {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+<div class="container">
+<h1 style="text-align: center;">Hiragana Yōon (ひらがな 拗音)</h1>
+<p class="subtitle" style="text-align: center;">Digrafos y sonidos contraídos del silabario hiragana</p>
+<div class="badges-container" style="text-align: left;"><span class="badge">33 Caracteres Yōon</span> <span class="badge">Combinaciones con -ya, -yu, -yo pequeñas</span> <span class="badge">Sonidos Seion, Dakuon y Handakuon</span></div>
+<h2 class="section-header" style="text-align: left;">Yōon Básicos (Seion / 清音)</h2>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante Base</th>
+<th>- ya (ゃ)</th>
+<th>- yu (ゅ)</th>
+<th>- yo (ょ)</th>
+</tr>
+</thead>
+<tbody><!-- Fila K -->
+<tr>
+<th>K (き)</th>
+<td class="kana-cell"><span class="kana">きゃ</span><span class="romaji">kya</span></td>
+<td class="kana-cell"><span class="kana">きゅ</span><span class="romaji">kyu</span></td>
+<td class="kana-cell"><span class="kana">きょ</span><span class="romaji">kyo</span></td>
+</tr>
+<!-- Fila S -->
+<tr>
+<th>S (し)</th>
+<td class="kana-cell"><span class="kana">しゃ</span><span class="romaji">sha</span></td>
+<td class="kana-cell"><span class="kana">しゅ</span><span class="romaji">shu</span></td>
+<td class="kana-cell"><span class="kana">しょ</span><span class="romaji">sho</span></td>
+</tr>
+<!-- Fila T -->
+<tr>
+<th>T (ち)</th>
+<td class="kana-cell"><span class="kana">ちゃ</span><span class="romaji">cha</span></td>
+<td class="kana-cell"><span class="kana">ちゅ</span><span class="romaji">chu</span></td>
+<td class="kana-cell"><span class="kana">ちょ</span><span class="romaji">cho</span></td>
+</tr>
+<!-- Fila N -->
+<tr>
+<th>N (に)</th>
+<td class="kana-cell"><span class="kana">にゃ</span><span class="romaji">nya</span></td>
+<td class="kana-cell"><span class="kana">にゅ</span><span class="romaji">nyu</span></td>
+<td class="kana-cell"><span class="kana">にょ</span><span class="romaji">nyo</span></td>
+</tr>
+<!-- Fila H -->
+<tr>
+<th>H (ひ)</th>
+<td class="kana-cell"><span class="kana">ひゃ</span><span class="romaji">hya</span></td>
+<td class="kana-cell"><span class="kana">ひゅ</span><span class="romaji">hyu</span></td>
+<td class="kana-cell"><span class="kana">ひょ</span><span class="romaji">hyo</span></td>
+</tr>
+<!-- Fila M -->
+<tr>
+<th>M (み)</th>
+<td class="kana-cell"><span class="kana">みゃ</span><span class="romaji">mya</span></td>
+<td class="kana-cell"><span class="kana">みゅ</span><span class="romaji">myu</span></td>
+<td class="kana-cell"><span class="kana">みょ</span><span class="romaji">myo</span></td>
+</tr>
+<!-- Fila R -->
+<tr>
+<th>R (り)</th>
+<td class="kana-cell"><span class="kana">りゃ</span><span class="romaji">rya</span></td>
+<td class="kana-cell"><span class="kana">りゅ</span><span class="romaji">ryu</span></td>
+<td class="kana-cell"><span class="kana">りょ</span><span class="romaji">ryo</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class="section-header">Yōon Impuros y Semi-impuros (Dakuon / Handakuon)</h2>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante Base</th>
+<th>- ya (ゃ)</th>
+<th>- yu (ゅ)</th>
+<th>- yo (ょ)</th>
+</tr>
+</thead>
+<tbody><!-- Fila G -->
+<tr>
+<th>G (ぎ)</th>
+<td class="kana-cell"><span class="kana">ぎゃ</span><span class="romaji">gya</span></td>
+<td class="kana-cell"><span class="kana">ぎゅ</span><span class="romaji">gyu</span></td>
+<td class="kana-cell"><span class="kana">ぎょ</span><span class="romaji">gyo</span></td>
+</tr>
+<!-- Fila J -->
+<tr>
+<th>J (じ)</th>
+<td class="kana-cell"><span class="kana">じゃ</span><span class="romaji">ja</span></td>
+<td class="kana-cell"><span class="kana">じゅ</span><span class="romaji">ju</span></td>
+<td class="kana-cell"><span class="kana">じょ</span><span class="romaji">jo</span></td>
+</tr>
+<!-- Fila B -->
+<tr>
+<th>B (び)</th>
+<td class="kana-cell"><span class="kana">びゃ</span><span class="romaji">bya</span></td>
+<td class="kana-cell"><span class="kana">びゅ</span><span class="romaji">byu</span></td>
+<td class="kana-cell"><span class="kana">びょ</span><span class="romaji">byo</span></td>
+</tr>
+<!-- Fila P -->
+<tr>
+<th>P (ぴ)</th>
+<td class="kana-cell"><span class="kana">ぴゃ</span><span class="romaji">pya</span></td>
+<td class="kana-cell"><span class="kana">ぴゅ</span><span class="romaji">pyu</span></td>
+<td class="kana-cell"><span class="kana">ぴょ</span><span class="romaji">pyo</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<footer>
+<p>Los caracteres Yōon combinan un carácter de la columna "-i" en tamaño normal con un carácter "ya", "yu" o "yo" en versión pequeña (小文字).</p>
+</footer></div>
+<p><br /></p>
+<style>
+        :root {
+            --primary-color: #4a5568;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-color: #2d3748;
+            --accent-color: #c53030;
+            --accent-hover: #fffaf0;
+            --header-bg: #edf2f7;
+            --tag-bg: #feefea;
+            --tag-border: #fbd5c8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 2.1rem;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            background-color: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .section-header {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--header-bg);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .kana-cell {
+            background-color: #fff;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+            width: 25%;
+        }
+
+        .kana-cell:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .kana {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            color: #1a202c;
+            line-height: 1.2;
+        }
+
+        .romaji {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: lowercase;
+            margin-top: 2px;
+        }
+
+        .empty-cell {
+            background-color: #f8fafc;
+        }
+
+        footer {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .kana {
+                font-size: 1.4rem;
+            }
+            .romaji {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+<div class="container">
+<h1>Katakana Yōon (カタカナ 拗音)</h1>
+<p class="subtitle">Digrafos y sonidos contraídos del silabario katakana</p>
+<div class="badges-container"><span class="badge">33 Caracteres Yōon</span> <span class="badge">21 Básicos (Seion)</span> <span class="badge">12 Impuros / Semi-impuros</span> <span class="badge">Combinaciones con -ya (ャ), -yu (ュ), -yo (ョ) pequeñas</span></div>
+<h2 class="section-header">Yōon Básicos (Seion / 清音)</h2>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante Base</th>
+<th>- ya (ャ)</th>
+<th>- yu (ュ)</th>
+<th>- yo (ョ)</th>
+</tr>
+</thead>
+<tbody><!-- Fila K -->
+<tr>
+<th>K (キ)</th>
+<td class="kana-cell"><span class="kana">キャ</span><span class="romaji">kya</span></td>
+<td class="kana-cell"><span class="kana">キュ</span><span class="romaji">kyu</span></td>
+<td class="kana-cell"><span class="kana">キョ</span><span class="romaji">kyo</span></td>
+</tr>
+<!-- Fila S -->
+<tr>
+<th>S (シ)</th>
+<td class="kana-cell"><span class="kana">シャ</span><span class="romaji">sha</span></td>
+<td class="kana-cell"><span class="kana">シュ</span><span class="romaji">shu</span></td>
+<td class="kana-cell"><span class="kana">ショ</span><span class="romaji">sho</span></td>
+</tr>
+<!-- Fila T -->
+<tr>
+<th>T (チ)</th>
+<td class="kana-cell"><span class="kana">チャ</span><span class="romaji">cha</span></td>
+<td class="kana-cell"><span class="kana">チュ</span><span class="romaji">chu</span></td>
+<td class="kana-cell"><span class="kana">チョ</span><span class="romaji">cho</span></td>
+</tr>
+<!-- Fila N -->
+<tr>
+<th>N (ニ)</th>
+<td class="kana-cell"><span class="kana">ニャ</span><span class="romaji">nya</span></td>
+<td class="kana-cell"><span class="kana">ニュ</span><span class="romaji">nyu</span></td>
+<td class="kana-cell"><span class="kana">ニョ</span><span class="romaji">nyo</span></td>
+</tr>
+<!-- Fila H -->
+<tr>
+<th>H (ヒ)</th>
+<td class="kana-cell"><span class="kana">ヒャ</span><span class="romaji">hya</span></td>
+<td class="kana-cell"><span class="kana">ヒュ</span><span class="romaji">hyu</span></td>
+<td class="kana-cell"><span class="kana">ヒョ</span><span class="romaji">hyo</span></td>
+</tr>
+<!-- Fila M -->
+<tr>
+<th>M (ミ)</th>
+<td class="kana-cell"><span class="kana">ミャ</span><span class="romaji">mya</span></td>
+<td class="kana-cell"><span class="kana">ミュ</span><span class="romaji">myu</span></td>
+<td class="kana-cell"><span class="kana">ミョ</span><span class="romaji">myo</span></td>
+</tr>
+<!-- Fila R -->
+<tr>
+<th>R (リ)</th>
+<td class="kana-cell"><span class="kana">リャ</span><span class="romaji">rya</span></td>
+<td class="kana-cell"><span class="kana">リュ</span><span class="romaji">ryu</span></td>
+<td class="kana-cell"><span class="kana">リョ</span><span class="romaji">ryo</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class="section-header">Yōon Impuros y Semi-impuros (Dakuon / Handakuon)</h2>
+<div class="table-responsive">
+<table>
+<thead>
+<tr>
+<th>Consonante Base</th>
+<th>- ya (ャ)</th>
+<th>- yu (ュ)</th>
+<th>- yo (ョ)</th>
+</tr>
+</thead>
+<tbody><!-- Fila G -->
+<tr>
+<th>G (ギ)</th>
+<td class="kana-cell"><span class="kana">ギャ</span><span class="romaji">gya</span></td>
+<td class="kana-cell"><span class="kana">ギュ</span><span class="romaji">gyu</span></td>
+<td class="kana-cell"><span class="kana">ギョ</span><span class="romaji">gyo</span></td>
+</tr>
+<!-- Fila J -->
+<tr>
+<th>J (ジ)</th>
+<td class="kana-cell"><span class="kana">ジャ</span><span class="romaji">ja</span></td>
+<td class="kana-cell"><span class="kana">ジュ</span><span class="romaji">ju</span></td>
+<td class="kana-cell"><span class="kana">ジョ</span><span class="romaji">jo</span></td>
+</tr>
+<!-- Fila B -->
+<tr>
+<th>B (ビ)</th>
+<td class="kana-cell"><span class="kana">ビャ</span><span class="romaji">bya</span></td>
+<td class="kana-cell"><span class="kana">ビュ</span><span class="romaji">byu</span></td>
+<td class="kana-cell"><span class="kana">ビョ</span><span class="romaji">byo</span></td>
+</tr>
+<!-- Fila P -->
+<tr>
+<th>P (ピ)</th>
+<td class="kana-cell"><span class="kana">ピャ</span><span class="romaji">pya</span></td>
+<td class="kana-cell"><span class="kana">ピュ</span><span class="romaji">pyu</span></td>
+<td class="kana-cell"><span class="kana">ピョ</span><span class="romaji">pyo</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<footer>
+<p>Los caracteres Katakana Yōon combinan una consonante de la columna "-i" (como キ, シ, チ) en tamaño normal con las versiones pequeñas de ャ (ya), ュ (yu) o ョ (yo). Son ampliamente utilizados para transcribir palabras extranjeras y préstamos lingüísticos (<em>gairaigo</em>).</p>
+</footer></div>
+<br>
+<section id="contacto">
+<div id="titulos"><p><b>Contacto</b></p></div>
+</section>
+<br>
+<p>Sección en construcción. Disculpe las molestias.</p>
+<br>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
